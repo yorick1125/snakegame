@@ -13,12 +13,16 @@ const context = canvas.getContext('2d');
 const middlex = canvas.width/2;
 const middley = canvas.height/2;
 const scale = 10;
+//Colors
 const borderColor = 'blue';
 const backgroundColor = 'black';
 const snakeColor = 'green;'
 const snakeBorderColor = 'yellow';
+//Images
 const gameOverImg = document.getElementById('gameoverimg');
 const winImg = document.getElementById('winimg');
+const snakeIntroImg = document.getElementById('snake-intro-img');
+const playButtonImg = document.getElementById('play-button-img');
 
 //Variables
 let snake = [
@@ -38,11 +42,30 @@ let dx = 0;
 //Vertical Velocity 
 let dy = -10;
 
+clear();
+intro();
+document.getElementById("playbutton").addEventListener('click', game);
 
-main();
-spawnFood();
-document.addEventListener("keydown", changeDirection);
 
+
+function game(){
+    score = 0;
+    changing_direction = false;
+    foodx = getRandomInt(2, 30) * 10;
+    foody = getRandomInt(2, 30) * 10;
+    document.getElementById('score').innerHTML = score;
+
+    clear();
+    main();
+    spawnFood();
+    document.addEventListener("keydown", changeDirection);
+}
+
+
+function intro(){
+    context.drawImage(snakeIntroImg, middlex - 90, 10, 180, 60);
+    //context.drawImage(playButtonImg, middlex - 40, middley + 20, 80, 40);
+}
 
 function main(){
     if(CheckWallCollision()){
@@ -140,8 +163,8 @@ function randomizeFood(min, max){
 }
 
 function spawnFood(){
-    foodx = getRandomInt(2, 8) * 10;
-    foody = getRandomInt(2, 8) * 10;
+    foodx = getRandomInt(2, 30) * 10;
+    foody = getRandomInt(2, 30) * 10;
     //document.getElementById('score').innerHTML = "foodx: " + foodx + "foody" + foody;
 
     snake.forEach(function hasEaten(bodyPart){
@@ -182,10 +205,12 @@ function getRandomInt(min, max) {
 }
 
 function gameOver(){
+    clear();
     context.drawImage(gameOverImg, middlex - 40, middley - 60, 80, 60);
 }
 
 function win(){
+    clear();
     context.drawImage(winImg, middlex - 60, middley - 80, 140, 120);
 
 }

@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="score">0</h1>
+    <div class="stats">
+        <h1 id="score-text">Score: </h1>
+        <h1 id="score">0</h1>
+        <button type="button" id="playbutton">Play</button>
+    </div>
+
     <canvas id="canvas" height="400" width="400"></canvas>
+
     <img style="visibility: collapse;" src="Assets/gameover.png" alt="gameover" id="gameoverimg">
     <img style="visibility: collapse;" src="Assets/win.gif" alt="win" id="winimg">
+    <img style="visibility: collapse;" src="Assets/snake-game-intro.png" alt="snake-intro" id="snake-intro-img">
+    <img style="visibility: collapse;" src="Assets/play-button.png" alt="play button" id="play-button-img">
     <script src="script.js"></script>
 </body>
 </html>

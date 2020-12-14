@@ -1,7 +1,51 @@
 #canvas {
     background-color: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 400px;
 }
+
+#playbutton{
+    margin: auto;
+    display: inline-block;
+    align-items: center;
+    height: 40px;
+    width: 80px;
+    background-color: green;
+    color: red;
+    font-weight: bolder;
+    font-size: 27px;
+    
+  }
+
+  #score{
+    margin: auto;
+    display: inline-block;
+    align-items: left;
+    height: 40px;
+    width: 80px;
+    font-size: 27px;
+  }
+
+  #score-text{
+    margin: auto;
+    display: inline-block;
+    align-items: left;
+    height: 40px;
+    width: 80px;
+    font-size: 27px;
+  }
+
+  .stats{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 400px;
+  }
+
+
