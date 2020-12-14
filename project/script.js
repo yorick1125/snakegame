@@ -1,8 +1,11 @@
 
 //Canvas Width:400px, Height:400px
 
-//Add Choose your teacher
-
+//Intro Splash Screen
+//Add Original Idea
+//Request Animation Frame
+//Adding Sound
+//Play again feature
 
 //Constants
 const canvas = document.querySelector("#canvas");
