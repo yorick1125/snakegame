@@ -45,6 +45,10 @@ let scoreText = document.getElementById('score');
 let roundText = document.getElementById('round');
 let infoText = document.getElementById('info');
 
+//Audio
+let eatAudio = new Audio('Audio/coin.mp3');
+let loseAudio = new Audio('Audio/bassimpact.mp3');
+
 //Horizontal velocity
 let dx = 0;
 //Vertical Velocity 
@@ -55,16 +59,27 @@ let dy = -10;
 window.addEventListener('load', () => {
     clear();
     intro();
+    clearSounds();
 })
 document.getElementById("playbutton").addEventListener('click', game);
 document.getElementById("nextbutton").addEventListener('click', game);
 document.getElementById("restartbutton").addEventListener('click', restart);
 
+function clearSounds(){
+    eatAudio.pause();
+}
+
+function mute(){
+
+}
 
 function restart(){
     clear();
+    clearSounds();
+    //gameAudio.load();
+    //gameAudio.play();
     score = 0;
-    round = 0;
+    round = 1;
     changing_direction = false;
     foodx = getRandomInt(2, 30) * 10;
     foody = getRandomInt(2, 30) * 10;
@@ -99,13 +114,13 @@ function game(){
 
 
 function intro(){
-    context.drawImage(snakeIntroImg, middlex - 90, 10, 180, 60);
+    context.drawImage(snakeIntroImg, middlex - 90, middley - 60, 180, 60);
     infoText.innerHTML = "To start a new game press the start button. ";
     //context.drawImage(playButtonImg, middlex - 40, middley + 20, 80, 40);
 }
 
 function main(){
-    if(CheckWallCollision()){
+    if(CheckCollision()){
         gameOver();
         return;//if wall has collided, returns out of main and exits the game
     }
@@ -179,7 +194,7 @@ function changeDirection(event){
     }
 }
 
-function CheckWallCollision(){
+function CheckCollision(){
     for(let i = 4; i < snake.length; i++){
         let hasCollided = snake[i].x === snake[0].x && snake[i].y === snake[0].y;
         if(hasCollided){
@@ -207,6 +222,9 @@ function spawnFood(){
     snake.forEach(function hasEaten(bodyPart){
         const hasEaten = bodyPart.x == foodx && bodyPart.y == foody;
         if(hasEaten){
+            clearSounds();
+            eatAudio.load();
+            eatAudio.play();
             spawnFood();
         }
     })
@@ -224,8 +242,11 @@ function moveSnake(){
     snake.unshift(head);
     let hasEatenFood = snake[0].x === foodx && snake[0].y === foody;
     if (hasEatenFood) {
+        clearSounds();
+        eatAudio.load();
+        eatAudio.play();
         score += 10;
-        //interval -= 10;
+        interval -= 10;
         scoreText.innerHTML = score;
         spawnFood();
     }
@@ -243,6 +264,8 @@ function getRandomInt(min, max) {
 }
 
 function gameOver(){
+    loseAudio.load();
+    loseAudio.play();
     infoText.innerHTML = "GG fam try again by clicking restart. ";
     clear();
     context.drawImage(gameOverImg, middlex - 40, middley - 60, 80, 60);

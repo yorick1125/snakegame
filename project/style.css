@@ -40,6 +40,17 @@
   font-size: 27px;
 }
 
+#mutebutton{
+  margin: auto;
+  display: inline-block;
+  height: 40px;
+  width: 110px;
+  background-color: green;
+  color: red;
+  font-weight: bolder;
+  font-size: 27px;
+}
+
   #score{
     margin: auto;
     display: inline-block;
