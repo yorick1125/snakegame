@@ -11,23 +11,42 @@
 #playbutton{
     margin: auto;
     display: inline-block;
-    align-items: center;
     height: 40px;
     width: 80px;
     background-color: green;
     color: red;
     font-weight: bolder;
     font-size: 27px;
-    
   }
+#restartbutton{
+  margin: auto;
+  display: inline-block;
+  height: 40px;
+  width: 110px;
+  background-color: green;
+  color: red;
+  font-weight: bolder;
+  font-size: 27px;
+}
+
+#nextbutton{
+  margin: auto;
+  display: inline-block;
+  height: 40px;
+  width: 110px;
+  background-color: green;
+  color: red;
+  font-weight: bolder;
+  font-size: 27px;
+}
 
   #score{
     margin: auto;
     display: inline-block;
     align-items: left;
     height: 40px;
-    width: 80px;
     font-size: 27px;
+    color: red;
   }
 
   #score-text{
@@ -37,6 +56,26 @@
     height: 40px;
     width: 80px;
     font-size: 27px;
+    color: rgb(50, 200, 255);
+  }
+
+  #round{
+    margin: auto;
+    display: inline-block;
+    align-items: right;
+    text-align: right;
+    height: 40px;
+    font-size: 27px;
+    color: red;
+  }
+
+  #round-text{
+    margin: auto;
+    margin-right: 10px;
+    display: inline-block;
+    height: 40px;
+    font-size: 27px;
+    color: rgb(50, 200, 255);
   }
 
   .stats{
@@ -45,7 +84,7 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 400px;
+    width: 430px;
   }
 
 

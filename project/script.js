@@ -24,6 +24,7 @@ const winImg = document.getElementById('winimg');
 const snakeIntroImg = document.getElementById('snake-intro-img');
 const playButtonImg = document.getElementById('play-button-img');
 
+
 //Variables
 let snake = [
     {x: middlex, y:middley},
@@ -33,10 +34,15 @@ let snake = [
     {x: middlex + 40, y:middley},
 ];
 let score = 0;
+let round = 1;
 let changing_direction = false;
 let foodx;
 let foody;
+let interval = 100;
 
+//Events
+let scoreText = document.getElementById('score');
+let roundText = document.getElementById('round');
 //Horizontal velocity
 let dx = 0;
 //Vertical Velocity 
@@ -45,16 +51,26 @@ let dy = -10;
 clear();
 intro();
 document.getElementById("playbutton").addEventListener('click', game);
+document.getElementById("nextbutton").addEventListener('click', game);
+document.getElementById("restartbutton").addEventListener('click', restart);
 
 
-
-function game(){
+function restart(){
     score = 0;
     changing_direction = false;
     foodx = getRandomInt(2, 30) * 10;
     foody = getRandomInt(2, 30) * 10;
-    document.getElementById('score').innerHTML = score;
+    snake = [
+        {x: middlex, y:middley},
+        {x: middlex + 10, y:middley},
+        {x: middlex + 20, y:middley},
+        {x: middlex + 30, y:middley},
+        {x: middlex + 40, y:middley},
+    ];
+    intro();
+}
 
+function game(){
     clear();
     main();
     spawnFood();
@@ -85,7 +101,7 @@ function main(){
         moveSnake();
         DrawSnake();
         main()
-    }, 100)
+    }, interval)
 }
 
 
@@ -108,10 +124,10 @@ function clear(){
 }
 
 function changeDirection(event){
-    const LEFT = 37;
-    const RIGHT = 39;
-    const UP = 38;
-    const DOWN = 40;
+    const LEFT = 65; // A Left
+    const RIGHT = 68; // D Right
+    const UP = 87; // W Up
+    const DOWN = 83; // S Down
 
     if(changing_direction){
         return;
@@ -188,7 +204,8 @@ function moveSnake(){
     let hasEatenFood = snake[0].x === foodx && snake[0].y === foody;
     if (hasEatenFood) {
         score += 10;
-        document.getElementById('score').innerHTML = score;
+        interval -= 10;
+        scoreText.innerHTML = score;
         spawnFood();
     }
     else {
@@ -210,6 +227,8 @@ function gameOver(){
 }
 
 function win(){
+    round++;
+    roundText.innerHTML = round;
     clear();
     context.drawImage(winImg, middlex - 60, middley - 80, 140, 120);
 
