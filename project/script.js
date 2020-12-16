@@ -40,23 +40,31 @@ let foodx;
 let foody;
 let interval = 100;
 
-//Events
+//Elements
 let scoreText = document.getElementById('score');
 let roundText = document.getElementById('round');
+let infoText = document.getElementById('info');
+
 //Horizontal velocity
 let dx = 0;
 //Vertical Velocity 
 let dy = -10;
 
-clear();
-intro();
+
+
+window.addEventListener('load', () => {
+    clear();
+    intro();
+})
 document.getElementById("playbutton").addEventListener('click', game);
 document.getElementById("nextbutton").addEventListener('click', game);
 document.getElementById("restartbutton").addEventListener('click', restart);
 
 
 function restart(){
+    clear();
     score = 0;
+    round = 0;
     changing_direction = false;
     foodx = getRandomInt(2, 30) * 10;
     foody = getRandomInt(2, 30) * 10;
@@ -67,10 +75,22 @@ function restart(){
         {x: middlex + 30, y:middley},
         {x: middlex + 40, y:middley},
     ];
+    interval = 100;
+
+    scoreText.innerHTML = score;
+    roundText.innerHTML = round;
+
     intro();
 }
 
 function game(){
+    infoText.innerHTML = "";
+    score = 0;
+    changing_direction = false;
+    foodx = getRandomInt(2, 30) * 10;
+    foody = getRandomInt(2, 30) * 10;
+    scoreText.innerHTML = score;
+
     clear();
     main();
     spawnFood();
@@ -80,6 +100,7 @@ function game(){
 
 function intro(){
     context.drawImage(snakeIntroImg, middlex - 90, 10, 180, 60);
+    infoText.innerHTML = "To start a new game press the start button. ";
     //context.drawImage(playButtonImg, middlex - 40, middley + 20, 80, 40);
 }
 
@@ -204,7 +225,7 @@ function moveSnake(){
     let hasEatenFood = snake[0].x === foodx && snake[0].y === foody;
     if (hasEatenFood) {
         score += 10;
-        interval -= 10;
+        //interval -= 10;
         scoreText.innerHTML = score;
         spawnFood();
     }
@@ -222,6 +243,7 @@ function getRandomInt(min, max) {
 }
 
 function gameOver(){
+    infoText.innerHTML = "GG fam try again by clicking restart. ";
     clear();
     context.drawImage(gameOverImg, middlex - 40, middley - 60, 80, 60);
 }
@@ -229,7 +251,11 @@ function gameOver(){
 function win(){
     round++;
     roundText.innerHTML = round;
+    infoText.innerHTML = "Good job! Move on to the next round by clicking next";
     clear();
-    context.drawImage(winImg, middlex - 60, middley - 80, 140, 120);
+    if(round >= 10){
+        context.drawImage(winImg, middlex - 60, middley - 80, 140, 120);
+        infoText.innerHTML = "";
+    }
 
 }
