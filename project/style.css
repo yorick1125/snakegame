@@ -1,3 +1,8 @@
+*{
+  background-color: cornflowerblue ;
+}
+
+
 #canvas {
     background-color: black;
     padding-left: 0;
@@ -17,7 +22,7 @@
     color: red;
     font-weight: bolder;
     font-size: 27px;
-  }
+}
 #restartbutton{
   margin: auto;
   display: inline-block;
@@ -31,7 +36,9 @@
 
 #nextbutton{
   margin: auto;
-  display: inline-block;
+  text-align: center;
+  align-items: center;
+  display: block;
   height: 40px;
   width: 110px;
   background-color: green;
@@ -58,6 +65,7 @@
     height: 40px;
     font-size: 27px;
     color: red;
+    background-color: blue;
   }
 
   #score-text{
@@ -67,7 +75,9 @@
     height: 40px;
     width: 80px;
     font-size: 27px;
-    color: rgb(50, 200, 255);
+    color: black;
+    background-color: blue;
+    color: yellow;
   }
 
   #round{
@@ -78,6 +88,7 @@
     height: 40px;
     font-size: 27px;
     color: red;
+    background-color: blue;
   }
 
   #round-text{
@@ -86,16 +97,24 @@
     display: inline-block;
     height: 40px;
     font-size: 27px;
-    color: rgb(50, 200, 255);
+    color: black;
+    background-color: blue;
+    color: yellow;
   }
 
   .stats{
-    padding-left: 0;
-    padding-right: 0;
     margin-left: auto;
     margin-right: auto;
     display: block;
     width: 450px;
+    padding: 5px;
+    background-color: blue;
+    border: black 3px solid;
+  }
+
+  #info{
+    background-color: blue;
+    color: yellow;
   }
 
 

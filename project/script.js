@@ -69,18 +69,11 @@ function clearSounds(){
     eatAudio.pause();
 }
 
-function mute(){
-
-}
-
 function restart(){
     clear();
     clearSounds();
-    //gameAudio.load();
-    //gameAudio.play();
     score = 0;
     round = 1;
-    changing_direction = false;
     foodx = getRandomInt(2, 30) * 10;
     foody = getRandomInt(2, 30) * 10;
     snake = [
@@ -100,12 +93,17 @@ function restart(){
 
 function game(){
     infoText.innerHTML = "";
-    score = 0;
-    changing_direction = false;
+    score = 0;    changing_direction = false;
     foodx = getRandomInt(2, 30) * 10;
     foody = getRandomInt(2, 30) * 10;
     scoreText.innerHTML = score;
-
+    snake = [
+        {x: middlex, y:middley},
+        {x: middlex + 10, y:middley},
+        {x: middlex + 20, y:middley},
+        {x: middlex + 30, y:middley},
+        {x: middlex + 40, y:middley},
+    ];
     clear();
     main();
     spawnFood();
@@ -113,9 +111,12 @@ function game(){
 }
 
 
+
+
 function intro(){
     context.drawImage(snakeIntroImg, middlex - 90, middley - 60, 180, 60);
-    infoText.innerHTML = "To start a new game press the start button. ";
+    infoText.style.textAlign = "center";
+    infoText.innerHTML = "To start a new game press the start button. \nW = UP, A = Left, S = Down, D = Right.\nEat the food 5 times to win a round, win 5 rounds to beat the game (if you can).\nBeware this snake game has a twist to it!\nYou are permitted to touch your tail with the head without dying.";
     //context.drawImage(playButtonImg, middlex - 40, middley + 20, 80, 40);
 }
 
@@ -195,12 +196,12 @@ function changeDirection(event){
 }
 
 function CheckCollision(){
-    for(let i = 4; i < snake.length; i++){
-        let hasCollided = snake[i].x === snake[0].x && snake[i].y === snake[0].y;
-        if(hasCollided){
-            return true;
-        }
-    }
+    // for(let i = 4; i < snake.length; i++){
+    //     let hasCollided = snake[i].x === snake[0].x && snake[i].y === snake[0].y;
+    //     if(hasCollided){
+    //         return true;
+    //     }
+    // }
 
     let left_collision = snake[0].x < 0;
     let right_collision = snake[0].x > canvas.width - scale;
@@ -217,7 +218,6 @@ function randomizeFood(min, max){
 function spawnFood(){
     foodx = getRandomInt(2, 30) * 10;
     foody = getRandomInt(2, 30) * 10;
-    //document.getElementById('score').innerHTML = "foodx: " + foodx + "foody" + foody;
 
     snake.forEach(function hasEaten(bodyPart){
         const hasEaten = bodyPart.x == foodx && bodyPart.y == foody;
@@ -276,7 +276,7 @@ function win(){
     roundText.innerHTML = round;
     infoText.innerHTML = "Good job! Move on to the next round by clicking next";
     clear();
-    if(round >= 10){
+    if(round >= 5){
         context.drawImage(winImg, middlex - 60, middley - 80, 140, 120);
         infoText.innerHTML = "";
     }
