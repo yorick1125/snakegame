@@ -10,11 +10,12 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 400px;
+    width: 470px;
 }
 
 #playbutton{
     margin: auto;
+    margin-left: 20px;
     display: inline-block;
     height: 40px;
     width: 80px;
@@ -25,6 +26,7 @@
 }
 #restartbutton{
   margin: auto;
+  margin-left: 10px;
   display: inline-block;
   height: 40px;
   width: 110px;
@@ -93,7 +95,7 @@
 
   #round-text{
     margin: auto;
-    margin-right: 10px;
+    margin-left: 15px;
     display: inline-block;
     height: 40px;
     font-size: 27px;
@@ -103,10 +105,11 @@
   }
 
   .stats{
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    align-items: center;
+    justify-content: space-evenly;
     display: block;
-    width: 450px;
+    width: 454px;
     padding: 5px;
     background-color: blue;
     border: black 3px solid;
@@ -115,6 +118,7 @@
   #info{
     background-color: blue;
     color: yellow;
+    font-family: 'Courier New', Courier, monospace;
   }
 
 

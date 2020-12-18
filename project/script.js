@@ -116,7 +116,7 @@ function game(){
 function intro(){
     context.drawImage(snakeIntroImg, middlex - 90, middley - 60, 180, 60);
     infoText.style.textAlign = "center";
-    infoText.innerHTML = "To start a new game press the start button. \nW = UP, A = Left, S = Down, D = Right.\nEat the food 5 times to win a round, win 5 rounds to beat the game (if you can).\nBeware this snake game has a twist to it!\nYou are permitted to touch your tail with the head without dying.";
+    infoText.innerHTML = "To start a new game press the start button. <br>W = UP, A = Left, S = Down, D = Right.<br>Eat the food 5 times to win a round, win 5 rounds to beat the game (if you can).<br>Beware this snake game has a twist to it!<br>You are permitted to touch your tail with the head without dying.";
     //context.drawImage(playButtonImg, middlex - 40, middley + 20, 80, 40);
 }
 
