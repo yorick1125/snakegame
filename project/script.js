@@ -96,6 +96,8 @@ function game(){
     score = 0;    changing_direction = false;
     foodx = getRandomInt(2, 30) * 10;
     foody = getRandomInt(2, 30) * 10;
+    console.log(foodx);
+    console.log(foody);
     scoreText.innerHTML = score;
     snake = [
         {x: middlex, y:middley},
