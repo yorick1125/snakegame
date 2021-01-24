@@ -39,6 +39,7 @@ let changing_direction = false;
 let foodx;
 let foody;
 let interval = 100;
+let gameover = false;
 
 //Elements
 let scoreText = document.getElementById('score');
@@ -61,17 +62,16 @@ window.addEventListener('load', () => {
     intro();
     clearSounds();
 })
-document.getElementById("playbutton").addEventListener('click', game);
-document.getElementById("nextbutton").addEventListener('click', game);
-document.getElementById("restartbutton").addEventListener('click', restart);
 
 function clearSounds(){
     eatAudio.pause();
 }
 
 function restart(){
+    gameover = false;
     clear();
     clearSounds();
+    console.log("restart");
     score = 0;
     round = 1;
     foodx = getRandomInt(2, 30) * 10;
@@ -86,12 +86,16 @@ function restart(){
     interval = 100;
 
     scoreText.innerHTML = score;
-    roundText.innerHTML = round;
 
     intro();
 }
 
 function game(){
+    if(gameover)
+    {
+        return;
+    }
+
     infoText.innerHTML = "";
     score = 0;    changing_direction = false;
     foodx = getRandomInt(2, 30) * 10;
@@ -118,8 +122,7 @@ function game(){
 function intro(){
     context.drawImage(snakeIntroImg, middlex - 90, middley - 60, 180, 60);
     infoText.style.textAlign = "center";
-    infoText.innerHTML = "To start a new game press the start button. <br>W = UP, A = Left, S = Down, D = Right.<br>Eat the food 5 times to win a round, win 5 rounds to beat the game (if you can).<br>Beware this snake game has a twist to it!<br>You are permitted to touch your tail with the head without dying.";
-    //context.drawImage(playButtonImg, middlex - 40, middley + 20, 80, 40);
+    infoText.innerHTML = "To start a new game press the start button. <br>W = UP, A = Left, S = Down, D = Right.<br>Gain a score of 100 to win.<br>Beware this snake game has a twist to it!<br>You are permitted to touch your tail with the head without dying.";
 }
 
 function main(){
@@ -128,7 +131,7 @@ function main(){
         return;//if wall has collided, returns out of main and exits the game
     }
 
-    if(score >= 50){
+    if(score >= 100){
         win();
         return;
     }
@@ -269,6 +272,7 @@ function gameOver(){
     loseAudio.load();
     loseAudio.play();
     infoText.innerHTML = "GG fam try again by clicking restart. ";
+    gameover = true;
     clear();
     context.drawImage(gameOverImg, middlex - 40, middley - 60, 80, 60);
 }

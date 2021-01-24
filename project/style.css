@@ -1,5 +1,4 @@
 *{
-  background-color: cornflowerblue ;
 }
 
 
@@ -15,8 +14,6 @@
 
 #playbutton{
     margin: auto;
-    margin-left: 20px;
-    display: inline-block;
     height: 40px;
     width: 80px;
     background-color: green;
@@ -27,7 +24,6 @@
 #restartbutton{
   margin: auto;
   margin-left: 10px;
-  display: inline-block;
   height: 40px;
   width: 110px;
   background-color: green;
@@ -36,34 +32,10 @@
   font-size: 27px;
 }
 
-#nextbutton{
-  margin: auto;
-  text-align: center;
-  align-items: center;
-  display: block;
-  height: 40px;
-  width: 110px;
-  background-color: green;
-  color: red;
-  font-weight: bolder;
-  font-size: 27px;
-}
-
-#mutebutton{
-  margin: auto;
-  display: inline-block;
-  height: 40px;
-  width: 110px;
-  background-color: green;
-  color: red;
-  font-weight: bolder;
-  font-size: 27px;
-}
 
   #score{
     margin: auto;
     display: inline-block;
-    align-items: left;
     height: 40px;
     font-size: 27px;
     color: red;
@@ -73,7 +45,6 @@
   #score-text{
     margin: auto;
     display: inline-block;
-    align-items: left;
     height: 40px;
     width: 80px;
     font-size: 27px;
@@ -82,32 +53,10 @@
     color: yellow;
   }
 
-  #round{
-    margin: auto;
-    display: inline-block;
-    align-items: right;
-    text-align: right;
-    height: 40px;
-    font-size: 27px;
-    color: red;
-    background-color: blue;
-  }
-
-  #round-text{
-    margin: auto;
-    margin-left: 15px;
-    display: inline-block;
-    height: 40px;
-    font-size: 27px;
-    color: black;
-    background-color: blue;
-    color: yellow;
-  }
-
   .stats{
     margin: auto;
-    align-items: center;
-    justify-content: space-evenly;
+    text-align: center;
+    justify-content: center;
     display: block;
     width: 454px;
     padding: 5px;
